@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import ThemeChanger from "@/components/theme-changer";
+import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -25,7 +27,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <header>
+            <div className="flex justify-between">
+              <div>HEADER</div>
+              <ThemeChanger />
+            </div>
+          </header>
+          <main className="flex-1">{children}</main>
+          <footer>FOOTER</footer>
+        </ThemeProvider>
       </body>
     </html>
   );

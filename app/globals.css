@@ -146,3 +146,9 @@ a {
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .btn-icon {
+    @apply rounded-full border border-teal-700 p-1 transition-all duration-100 hover:ring-1 hover:ring-teal-500 active:scale-75 [&>svg:hover]:stroke-teal-700 [&>svg]:ring-teal-800 cursor-pointer;
+  }
+}
