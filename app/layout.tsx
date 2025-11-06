@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { SessionProvider } from "next-auth/react";
+import { use } from "react";
 import ThemeChanger from "@/components/theme-changer";
 import { ThemeProvider } from "@/components/theme-provider";
+import { auth } from "@/lib/auth";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -24,24 +27,28 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = use(auth());
+
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <header>
-            <div className="flex justify-between">
-              <div>HEADER</div>
-              <ThemeChanger />
-            </div>
-          </header>
-          <main className="flex-1">{children}</main>
-          <footer>FOOTER</footer>
-        </ThemeProvider>
+        <SessionProvider session={session}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <header>
+              <div className="flex justify-between">
+                <div>HEADER</div>
+                <ThemeChanger />
+              </div>
+            </header>
+            <main className="flex-1">{children}</main>
+            <footer>FOOTER</footer>
+          </ThemeProvider>
+        </SessionProvider>
       </body>
     </html>
   );
