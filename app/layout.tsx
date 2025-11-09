@@ -6,6 +6,7 @@ import ThemeChanger from "@/components/theme-changer";
 import { ThemeProvider } from "@/components/theme-provider";
 import { auth } from "@/lib/auth";
 import "./globals.css";
+import { Nav } from "./nav";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,14 +40,9 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <header>
-              <div className="flex justify-between">
-                <div>HEADER</div>
-                <ThemeChanger />
-              </div>
-            </header>
+            <Nav />
             <main className="flex-1">{children}</main>
-            <footer>FOOTER</footer>
+            <footer><div className="text-center">2025 &#169; KAY all rights reserved.</div></footer>
           </ThemeProvider>
         </SessionProvider>
       </body>
