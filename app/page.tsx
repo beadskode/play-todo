@@ -1,12 +1,11 @@
-import Image from "next/image";
-import styles from "./page.module.css";
 import { SignForm } from "./auth/sign-form";
-import { cn } from "@/lib/utils";
+import { Todo } from "./todo";
 
 export default function Home() {
+  let session:boolean = false;
   return (
-    <div className={cn(styles.page, 'h-full')}>
-      <SignForm />
+    <div className='h-full'>
+      {session ? <Todo /> : <SignForm />} 
     </div>
   );
 }

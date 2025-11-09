@@ -41,8 +41,10 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <Nav />
-            <main className="flex-1">{children}</main>
-            <footer><div className="text-center">2025 &#169; KAY all rights reserved.</div></footer>
+            <main className="h-full flex-1">{children}</main>
+            <footer className="hmf-padding">
+              <div className="text-center">2025 &#169; KAY all rights reserved.</div>
+            </footer>
           </ThemeProvider>
         </SessionProvider>
       </body>

@@ -1,5 +1,7 @@
 export function SignForm() {
     return (
-        <div>SignForm</div>
+        <div className="h-full text-center">
+            SignForm
+        </div>
     );
 }
