@@ -1,11 +1,12 @@
-import { SignForm } from "./auth/sign-form";
-import { Todo } from "./todo";
+import { use } from "react";
+import { auth } from "@/lib/auth";
 
 export default function Home() {
-  let session:boolean = false;
+  const session = use(auth());
+  const didSignin = !!session?.user;
   return (
-    <div className='h-full'>
-      {session ? <Todo /> : <SignForm />} 
+    <div className="h-full">
+      {didSignin ? <div>Redirect</div> : <div>Login First</div>}
     </div>
   );
 }

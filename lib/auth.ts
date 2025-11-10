@@ -15,6 +15,6 @@ export const {
     strategy: "jwt",
   },
   pages: {},
-  providers: [Google, GitHub, Naver, Kakao, Credentials({})],
+  providers: [Google, GitHub, Naver, Kakao, Credentials],
   secret: process.env.AUTH_SECRET as string,
 });
