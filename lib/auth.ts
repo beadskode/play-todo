@@ -16,4 +16,5 @@ export const {
   },
   pages: {},
   providers: [Google, GitHub, Naver, Kakao, Credentials({})],
+  secret: process.env.AUTH_SECRET as string,
 });
