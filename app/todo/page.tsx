@@ -1,6 +1,5 @@
 import { redirect } from "next/navigation";
 import { use } from "react";
-import { SignOutButton } from "@/components/signout-button";
 import { auth } from "@/lib/auth";
 import { MemberProfile } from "./member/member-profile";
 
@@ -12,7 +11,6 @@ export default function Todo() {
   return (
     <div className="flex h-full w-full justify-between gap-3">
       <MemberProfile />
-      <SignOutButton />
       <div className="main-container flex-1 text-center">TODO</div>
     </div>
   );
