@@ -1,5 +1,9 @@
 import SignForm from "./sign-form";
 
 export default function Sign() {
-  return <SignForm />;
+  return (
+    <div className="h-full place-content-center place-items-center">
+      <SignForm />
+    </div>
+  );
 }
