@@ -21,13 +21,15 @@ export function Nav() {
           <ThemeChanger />
           {didSignin ? (
             <div className="flex items-center gap-3">
-              <Image
-                src={session?.user?.image || DefaultAvatar}
-                alt={session?.user?.name || "guest"}
-                width={40}
-                height={40}
-              />
-              <div>{session.user?.name}</div>
+              <div className="overflow-hidden rounded-full border">
+                <Image
+                  src={session?.user?.image || DefaultAvatar}
+                  alt={session?.user?.name || "guest"}
+                  width={24}
+                  height={24}
+                />
+              </div>
+              <div className="me-2">{session.user?.name}</div>
               <SignOutButton />
             </div>
           ) : (
