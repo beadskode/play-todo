@@ -1,8 +1,13 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
+import { useLogin } from "./login-hook";
 
 export function KakaoSignButton() {
+  const login = useLogin();
   return (
     <Button
+      onClick={() => login("kakao")}
       variant="outline"
       className="h-12 w-full gap-2 bg-[#FEE500] text-black hover:bg-[#ecd800]"
     >
