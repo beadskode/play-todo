@@ -10,10 +10,10 @@ export default function Todo() {
   if (!didSignin) redirect("/");
 
   return (
-    <div className="flex justify-between w-full h-full gap-3 hmf-padding">
+    <div className="flex h-full w-full justify-between gap-3">
       <MemberProfile />
       <SignOutButton />
-      <div className="flex-1 text-center main-container">TODO</div>
+      <div className="main-container flex-1 text-center">TODO</div>
     </div>
   );
 }

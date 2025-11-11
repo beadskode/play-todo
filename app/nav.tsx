@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { use } from "react";
 import ThemeChanger from "@/components/theme-changer";
 import { auth } from "@/lib/auth";
@@ -12,7 +11,7 @@ export function Nav() {
   return (
     <header className="hmf-padding">
       <div className="flex justify-between">
-        <div className="flex items-center font-bold flex-horizon text-stone-700">
+        <div className="flex flex-horizon items-center font-bold text-stone-700">
           <Image
             src="/app-icon.png"
             alt="main icon"
@@ -29,7 +28,7 @@ export function Nav() {
               <SignOutButton />
             </div>
           ) : (
-            <Link href="/api/auth/signin">Sign in</Link>
+            <></>
           )}
         </div>
       </div>
