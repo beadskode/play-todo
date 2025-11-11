@@ -2,6 +2,7 @@
 import { MonitorIcon, MoonStar, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { Button } from "./ui/button";
 
 const THEME_ICONS = {
   light: <MonitorIcon />,
@@ -27,8 +28,8 @@ export default function ThemeChanger() {
     setTheme(THEMES[nowThemeIndex % THEMES.length]);
   };
   return (
-    <button type="button" onClick={changeTheme} className="btn-icon">
+    <Button type="button" onClick={changeTheme} variant={"ghost"}>
       {THEME_ICONS[theme as keyof typeof THEME_ICONS]}
-    </button>
+    </Button>
   );
 }
