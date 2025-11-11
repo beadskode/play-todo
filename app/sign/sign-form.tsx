@@ -43,7 +43,7 @@ export function SignIn({ toggleSign }: ToggleSigninProps) {
         <LabelInput
           label="password"
           type="password"
-          name="password"
+          name="pw"
           // error={validError}
           placeholder="Password"
           // defaultValue={}
@@ -99,7 +99,7 @@ export function SignUp({ toggleSign }: ToggleSigninProps) {
         <LabelInput
           label="password"
           type="password"
-          name="password"
+          name="pw"
           // error={validError}
           placeholder="Password"
           // defaultValue={}

@@ -32,21 +32,30 @@ export const {
   ],
   callbacks: {
     async signIn({ user, profile, account }) {
+      const isCredential = account?.provider === "credentials";
       console.log("🐼 ~ user:", user);
       console.log("🐼 ~ profile:", profile);
-      console.log("🐼 ~ account:", account);
+      console.log("🐼 ~ isCredential:", isCredential);
+      const { email, name, image } = user;
+      if (!email) return false;
       return true;
     },
-    async jwt({ token, user }) {
-      if (user) {
-        token.id = user.id;
-        token.email = user.email;
-        token.name = user.name;
+    async jwt({ token, user, trigger, account, session }) {
+      // token, user는 Credential 사용 시 전달 / Session은 trigger가 update인 경우 전달
+      // update = 변경된 정보로 세션과 토큰 갱신
+      const userData = trigger === "update" ? session : user;
+      if (userData) {
+        token.id = userData.id;
+        token.email = userData.email;
+        token.name = userData.name || userData.nickname;
       }
       return token;
     },
     async session({ session, token }) {
       if (token) {
+        session.user.id = token.id?.toString() || "";
+        session.user.name = token.name;
+        session.user.email = token.email as string;
       }
       return session;
     },
@@ -54,7 +63,7 @@ export const {
   trustHost: true,
   jwt: { maxAge: 30 * 60 },
   pages: {
-    // signIn: "/sign",
+    signIn: "/sign",
     error: "/sign/error",
   },
   secret: process.env.AUTH_SECRET as string,

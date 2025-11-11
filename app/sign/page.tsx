@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Divider from "@/components/divider";
+import AppIcon from "@/public/app-icon.png";
 import { GithubSignButton } from "./oauth/github-oauth-button";
 import { GoogleSignButton } from "./oauth/google-oauth-button";
 import { KakaoSignButton } from "./oauth/kakao-oauth-button";
@@ -10,12 +11,7 @@ export default function Sign() {
   return (
     <div className="h-full place-content-center place-items-center">
       <div className="mb-8 place-items-center">
-        <Image
-          src="/app-icon.png"
-          alt="main icon"
-          width={40}
-          height={40}
-        ></Image>
+        <Image src={AppIcon} alt="main icon" width={40} height={40}></Image>
         <h1 className="mt-1 font-bold text-2xl text-stone-700">QuesTODO</h1>
         <h2 className="text-stone-500">Questify your TODOs.</h2>
       </div>

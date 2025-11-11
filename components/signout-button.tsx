@@ -10,7 +10,7 @@ export function SignOutButton() {
   if (!session?.data?.user) redirect("/");
   return (
     <form action={logout}>
-      <Button variant={"success"}>Sign out {session.data?.user?.name}</Button>
+      <Button variant={"success"}>Sign out</Button>
     </form>
   );
 }
