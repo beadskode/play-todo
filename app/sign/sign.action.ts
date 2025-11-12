@@ -12,20 +12,11 @@ export const oAuthLogin = async (
 };
 
 export const credentialLogin = async (formData: FormData) => {
-  const email = formData.get("email");
-  const password = formData.get("password");
-
-  if (!email || !password) {
-    alert("Email and Password is required!");
-    return;
+  try {
+    await signIn("credentials", formData);
+  } catch (error) {
+    throw error;
   }
-
-  const sign = await signIn("credentials", {
-    email,
-    password,
-    redirect: false,
-  });
-  console.log("🚀 sign:", sign); // error, ok, status, …
 };
 
 export const logout = async () => {

@@ -1,62 +1,21 @@
-"use client";
-
-import { useState } from "react";
-import TodoButton from "@/components/todo-button";
-import TodoCard from "@/components/todo-card";
-import { MemberProfile } from "./member/member-profile";
-
-type TodoItem = {
-  id: number;
-  title: string;
-  details: { id: number; text: string; done: boolean }[];
-};
+import { redirect } from "next/navigation";
+import { use } from "react";
+import { auth } from "@/lib/auth";
+import MemberProfile from "./member/member-profile";
+import Ranking from "./ranking";
 
 export default function Todo() {
-  //const session = use(auth());
-  //const didSignin = !!session?.user;
-  //if (!didSignin) redirect("/");
-
-  const [todos, setTodos] = useState<TodoItem[]>([]);
-
-  // 새 TodoCard 추가
-  const addNewTodoCard = () => {
-    const newTodo: TodoItem = {
-      id: Date.now(),
-      title: "",
-      details: [],
-    };
-    setTodos([newTodo, ...todos]);
-  };
+  const session = use(auth());
+  const didSignin = !!session?.user;
+  if (!didSignin) redirect("/sign");
 
   return (
-    <div className="flex h-full w-full gap-3 p-6">
-      <MemberProfile />
-
-      <div className="flex-1">
-        <div className="mx-auto max-w-lg rounded-md border bg-white p-4 shadow-md">
-          {/* 제목과 추가 버튼 */}
-          <div className="mb-4 flex items-center justify-between">
-            <h1 className="flex-1 text-center font-bold text-2xl">Todo list</h1>
-            <TodoButton
-              todos={todos}
-              setTodos={setTodos}
-              onAddTodo={addNewTodoCard}
-            />
-          </div>
-
-          {/* TodoCard 리스트 */}
-          <div className="mb-4 flex flex-col gap-4">
-            {todos.map((todo) => (
-              <TodoCard
-                key={todo.id}
-                todos={todos}
-                setTodos={setTodos}
-                initialTodo={todo}
-              />
-            ))}
-          </div>
-        </div>
+    <div className="@container flex h-full flex-col gap-2 md:flex-row">
+      <div className="flex w-full flex-row gap-2 md:h-full md:w-70 md:flex-col">
+        <MemberProfile />
+        <Ranking userEmail={session.user.email ?? ""} />
       </div>
+      <div className="main-container flex-1 text-center">TODO</div>
     </div>
   );
 }
