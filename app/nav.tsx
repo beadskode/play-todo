@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { use } from "react";
 import ThemeChanger from "@/components/theme-changer";
 import { auth } from "@/lib/auth";
@@ -13,15 +14,18 @@ export function Nav() {
   return (
     <header className="hmf-padding">
       <div className="flex justify-between">
-        <div className="flex flex-horizon items-center font-bold text-stone-700">
+        <Link
+          href="/todo"
+          className="flex flex-horizon items-center font-bold text-stone-700!"
+        >
           <Image src={AppIcon} alt="main icon" width={32} height={32}></Image>
           <p>QuesTODO</p>
-        </div>
-        <div className="flex items-center justify-between gap-5">
+        </Link>
+        <div className="flex items-center justify-between gap-1">
           <ThemeChanger />
           {didSignin ? (
-            <div className="flex items-center gap-3">
-              <div className="overflow-hidden rounded-full border">
+            <div className="flex items-center gap-1">
+              <div className="overflow-hidden rounded-full border sm:hidden">
                 <Image
                   src={session?.user?.image || DefaultAvatar}
                   alt={session?.user?.name || "guest"}
@@ -29,7 +33,6 @@ export function Nav() {
                   height={24}
                 />
               </div>
-              <div className="me-2">{session.user?.name}</div>
               <SignOutButton />
             </div>
           ) : (

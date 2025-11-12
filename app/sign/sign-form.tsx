@@ -7,6 +7,8 @@ import LabelInput from "@/components/label-input";
 import { Button } from "@/components/ui/button";
 import { credentialLogin } from "./sign.action";
 
+// import { credentialLogin } from "./sign.action";
+
 type ToggleSigninProps = {
   toggleSign: () => void;
   email?: string | null;
@@ -29,9 +31,14 @@ export default function SignForm() {
 }
 
 export function SignIn({ toggleSign }: ToggleSigninProps) {
+  // credentialLogin
+  const signinAction = async (formData: FormData) => {
+    await credentialLogin(formData);
+  };
+
   return (
     <>
-      <form action={credentialLogin} className="flex flex-col space-y-2">
+      <form action={signinAction} className="flex flex-col space-y-2">
         <LabelInput
           label="email"
           type="email"
@@ -46,14 +53,6 @@ export function SignIn({ toggleSign }: ToggleSigninProps) {
           name="pw"
           // error={validError}
           placeholder="Password"
-          // defaultValue={}
-        />
-        <LabelInput
-          label="password confirm"
-          type="password"
-          name="password confirm"
-          // error={validError}
-          placeholder="Confirm your password"
           // defaultValue={}
         />
         <div className="mt-2 flex w-full space-x-3">
