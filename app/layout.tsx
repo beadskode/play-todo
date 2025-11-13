@@ -39,7 +39,7 @@ export default async function RootLayout({
           >
             <div className="container mx-auto flex min-h-screen flex-col justify-between">
               <Nav className="h-12" />
-              <main className="@container hmf-padding flex-1 overflow-auto">
+              <main className="@container hmf-padding h-full flex-1 place-content-center">
                 {children}
               </main>
               <footer className="hmf-padding h-10">
