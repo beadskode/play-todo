@@ -140,7 +140,7 @@ a {
 }
 
 .main-container {
-  @apply w-sm rounded-md border-2 shadow-sm
+  @apply rounded-md border shadow-sm shadow-gray-950/5 p-2
 }
 .hmf-padding {
   @apply px-4 py-2

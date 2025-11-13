@@ -37,10 +37,12 @@ export default async function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <div className="container mx-auto flex h-screen flex-col justify-between">
-              <Nav />
-              <main className="hmf-padding flex-1">{children}</main>
-              <footer className="hmf-padding">
+            <div className="container mx-auto flex min-h-screen flex-col justify-between">
+              <Nav className="h-12" />
+              <main className="@container hmf-padding flex-1 overflow-auto">
+                {children}
+              </main>
+              <footer className="hmf-padding h-10">
                 <div className="text-center text-sm text-stone-500">
                   2025 &#169; KAY all rights reserved.
                 </div>

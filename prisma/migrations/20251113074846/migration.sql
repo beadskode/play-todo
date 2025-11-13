@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `Todos` MODIFY `parentId` INTEGER NULL DEFAULT 0;
