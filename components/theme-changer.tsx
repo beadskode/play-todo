@@ -1,12 +1,12 @@
 "use client";
-import { MonitorIcon, MoonStar, SunIcon } from "lucide-react";
+import { MonitorIcon, MoonStarIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 
 const THEME_ICONS = {
   light: <MonitorIcon />,
-  system: <MoonStar />,
+  system: <MoonStarIcon />,
   dark: <SunIcon />,
 };
 

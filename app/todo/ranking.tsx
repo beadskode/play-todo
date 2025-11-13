@@ -1,4 +1,4 @@
-import { Trophy } from "lucide-react";
+import { TrophyIcon } from "lucide-react";
 import {
   Table,
   TableBody,
@@ -8,8 +8,15 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import prisma from "@/lib/db";
+import { cn } from "@/lib/utils";
 
-export default async function Ranking({ userEmail }: { userEmail: string }) {
+export default async function Ranking({
+  className,
+  userEmail,
+}: {
+  className?: string;
+  userEmail: string;
+}) {
   const rankings = await prisma.member.findMany({
     take: 5,
     orderBy: {
@@ -26,9 +33,9 @@ export default async function Ranking({ userEmail }: { userEmail: string }) {
   if (rankings.length > 5) rankings.splice(4);
 
   return (
-    <div className="main-container sm:40 w-full flex-1">
+    <div className={cn("w-full", className)}>
       <div className="mb-5 flex place-content-center items-center font-semibold text-stone-600 text-xl">
-        <Trophy size={20} strokeWidth={2.5} />
+        <TrophyIcon size={20} />
         <h1 className="ms-1 text-center">Ranking</h1>
       </div>
       <Table>

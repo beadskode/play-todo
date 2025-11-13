@@ -3,9 +3,14 @@ import Image from "next/image";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import prisma from "@/lib/db";
+import { cn } from "@/lib/utils";
 import DefaultAvatar from "@/public/default-avatar.png";
 
-export default async function MemberProfile() {
+export default async function MemberProfile({
+  className,
+}: {
+  className?: string;
+}) {
   const session = await auth();
   if (!session?.user?.name) redirect("/sign");
 
@@ -18,7 +23,7 @@ export default async function MemberProfile() {
   if (!member?.email) return <></>;
 
   return (
-    <div className="main-container hidden h-70 text-center sm:block sm:w-60 md:w-full">
+    <div className={cn("main-container text-center", className)}>
       <div className="h-full w-full place-content-center place-items-center">
         <div className="mb-4 overflow-hidden rounded-full border">
           <Image
